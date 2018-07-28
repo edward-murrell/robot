@@ -31,13 +31,13 @@ class Robot:
         self.__face = Aim((self.__face + 1) % 4)
 
     def move(self):
-        if self.__face == Aim.NORTH:
+        if self.__face == Aim.NORTH and self.__locY + 1 < self.__board.height:
             self.__locY += 1
-        elif self.__face == Aim.SOUTH:
+        elif self.__face == Aim.SOUTH and self.__locY - 1 >= 0:
             self.__locY -= 1
-        if self.__face == Aim.EAST:
+        if self.__face == Aim.EAST and self.__locX + 1 < self.__board.width:
             self.__locX += 1
-        elif self.__face == Aim.WEST:
+        elif self.__face == Aim.WEST and (self.__locX - 1) >= 0:
             self.__locX -= 1
 
     def report(self):
