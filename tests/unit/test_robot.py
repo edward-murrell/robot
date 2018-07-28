@@ -45,6 +45,19 @@ class TestRobot(TestCase):
 
         self.assertEqual(expected, actual)
 
+    def test_valid_move_south(self):
+        """
+        Robot moves after given valid movement command.
+        """
+        expected = '2,1,SOUTH'
+
+        robot = Robot(Board(8, 8))
+        robot.place(2, 2, Aim.South)
+        robot.move()
+        actual = robot.report()
+
+        self.assertEqual(expected, actual)
+
     @staticmethod
     def get_bad_place_scenarios():
         """
