@@ -2,7 +2,16 @@ from robot import Robot, Aim
 
 
 class Parser:
+    """
+    Parse lines into robot commands.
+    """
+
     def __init__(self, robot: Robot):
+        """
+        Wrap a parser around a robot object.
+
+        :param robot: Constructed Robot object.
+        """
         self.__robot = robot
         self.__map = {
             'NORTH': Aim.NORTH,
@@ -12,6 +21,14 @@ class Parser:
         }
 
     def read(self, line: str):
+        """
+        Parse an input line.
+
+        This method assumes that lines of a file have been stripped of newlines.
+
+        :param line:
+        :return: None, or str if returned by REPORT commands.
+        """
         if line == 'MOVE':
             self.__robot.move()
         elif line == 'LEFT':
@@ -24,6 +41,14 @@ class Parser:
             self.__place(line)
 
     def __place(self, line: str):
+        """
+        Call robot.place() with parameters if the parameters are valid.
+
+        This method assumes that the first six characters are 'PLACE '.
+
+        :param line: A line in the format 'PLACE X,Y,DIRECTION', where X & Y are positive integers, and DIRECTION is one
+         one of NORTH, SOUTH, EAST, WEST.
+        """
         parameters = line[6:].split(',')
         if len(parameters) != 3:
             return
