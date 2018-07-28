@@ -68,6 +68,16 @@ class TestRobot(TestCase):
                 'commands': [
                     ('place', {'x': 1, 'y': -2, 'direction': Aim.West})
                 ]
+            },
+            {
+                'label': 'Place multiple times invalid location. Do not place.',
+                'board': Board(16, 16),
+                'commands': [
+                    ('place', {'x': -1, 'y': 4, 'direction': Aim.North}),
+                    ('place', {'x': 3, 'y': 17, 'direction': Aim.East}),
+                    ('place', {'x': 7, 'y': 999999, 'direction': Aim.West}),
+                    ('place', {'x': 20, 'y': 17, 'direction': Aim.South})
+                ]
             }
         ]
 
