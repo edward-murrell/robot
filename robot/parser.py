@@ -12,3 +12,5 @@ class Parser:
             self.__robot.turn_left()
         elif line == 'RIGHT':
             self.__robot.turn_right()
+        elif line == 'REPORT':
+            return self.__robot.report()
