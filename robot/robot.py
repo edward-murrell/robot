@@ -24,6 +24,14 @@ class Robot:
         self.__face = direction
         self.__placed = True
 
+    def turn_left(self):
+        if self.__face == Aim.North:
+            self.__face = Aim.West
+
+    def turn_right(self):
+        if self.__face == Aim.North:
+            self.__face = Aim.East
+
     def move(self):
         if self.__face == Aim.North:
             self.__locY += 1
