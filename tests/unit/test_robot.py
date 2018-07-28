@@ -79,4 +79,4 @@ class TestRobot(TestCase):
             for command, args in commands:
                 robot.__getattribute__(command)(**args)
             actual = robot.report()
-            self.assertEqual(expected, actual)
+            self.assertEqual(expected, actual, f"Failed on scenario: {label}")
