@@ -17,6 +17,9 @@ make unit.tests
 python3.6 -m unittest tests.unit
 ```
 
+## Limitations
+- Board height & width can be zero, or negative.
+
 
 # Credits
 - Edward Murrell / edward@codefoundation.com.au
