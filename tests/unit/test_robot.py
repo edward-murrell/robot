@@ -210,7 +210,7 @@ class TestRobot(TestCase):
         """
         Worker method for get_bad_place_scenarios
         """
-        expected = "Not on the board yet!"
+        expected = None
         for scenario in self.get_bad_place_scenarios():
 
             label, board, commands = scenario['label'], scenario['board'], scenario['commands']
