@@ -43,6 +43,24 @@ class TestRobot(TestCase):
                 ],
                 'report': '2,1,SOUTH'
             },
+            {
+                'label': 'Robot moves East after given valid movement command.',
+                'board': Board(8, 8),
+                'commands': [
+                    ('place', {'x': 2, 'y': 4, 'direction': Aim.East}),
+                    ('move', {})
+                ],
+                'report': '3,4,EAST'
+            },
+            {
+                'label': 'Robot moves West after given valid movement command.',
+                'board': Board(8, 8),
+                'commands': [
+                    ('place', {'x': 7, 'y': 0, 'direction': Aim.West}),
+                    ('move', {})
+                ],
+                'report': '6,0,WEST'
+            },
         ]
 
     def test_move_scenarios(self):
