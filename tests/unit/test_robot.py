@@ -25,7 +25,7 @@ class TestRobot(TestCase):
         expected = "Not on the board yet!"
 
         robot = Robot(Board(1, 1))
-        robot.place(5, 5)
+        robot.place(5, 5, Aim.South)
         actual = robot.report()
 
         self.assertEqual(expected, actual)
