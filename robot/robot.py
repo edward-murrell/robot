@@ -29,6 +29,10 @@ class Robot:
             self.__locY += 1
         elif self.__face == Aim.South:
             self.__locY -= 1
+        if self.__face == Aim.East:
+            self.__locX += 1
+        elif self.__face == Aim.West:
+            self.__locX -= 1
 
     def report(self):
         if self.__placed:
