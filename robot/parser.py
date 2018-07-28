@@ -10,3 +10,5 @@ class Parser:
             self.__robot.move()
         elif line == 'LEFT':
             self.__robot.turn_left()
+        elif line == 'RIGHT':
+            self.__robot.turn_right()
