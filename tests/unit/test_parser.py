@@ -1,4 +1,4 @@
-from robot import Parser, Robot
+from robot import Parser, Robot, Aim
 from unittest import TestCase
 from unittest.mock import Mock
 
@@ -53,6 +53,17 @@ class TestParser(TestCase):
 
         robot.report.assert_called_once()
         self.assertEqual("Some Text", response)
+
+    def test_parse_place(self):
+        """
+        Reading PLACE calls Robot.place()
+        """
+        robot = Mock(Robot)
+
+        parser = Parser(robot)
+
+        parser.read("PLACE 3,4,NORTH")
+        robot.place.assert_called_with(3, 4, Aim.NORTH)
 
     def test_ignore_rubbish(self):
         """
