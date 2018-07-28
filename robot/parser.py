@@ -6,4 +6,7 @@ class Parser:
         self.__robot = robot
 
     def read(self, line: str):
-        self.__robot.move()
+        if line == 'MOVE':
+            self.__robot.move()
+        elif line == 'LEFT':
+            self.__robot.turn_left()
