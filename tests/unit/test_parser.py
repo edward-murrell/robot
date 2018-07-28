@@ -64,6 +64,29 @@ class TestParser(TestCase):
 
         parser.read("PLACE 3,4,NORTH")
         robot.place.assert_called_with(3, 4, Aim.NORTH)
+        parser.read("PLACE 1,7,SOUTH")
+        robot.place.assert_called_with(1, 7, Aim.SOUTH)
+        parser.read("PLACE 61,9,EAST")
+        robot.place.assert_called_with(61, 9, Aim.EAST)
+        parser.read("PLACE 66,77,SOUTH")
+        robot.place.assert_called_with(66, 77, Aim.SOUTH)
+
+    def test_parse_bad_place(self):
+        """
+        Reading bad PLACE calls does not call anything.
+        """
+        robot = Mock(Robot)
+
+        parser = Parser(robot)
+        parser.read("PLACE -3,4,SW")
+        parser.read("PLACE12,2,EAST")
+        parser.read("PLACE   4,4,EAST")
+        parser.read("PLACE7 ,9,NORTHY")
+        parser.read("PLACE ")
+        parser.read("PLACE X,Y,NORTH")
+        parser.read("PLACE -1,0,NORTH")
+
+        robot.place.assert_not_called()
 
     def test_ignore_rubbish(self):
         """
