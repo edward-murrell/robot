@@ -41,3 +41,42 @@ class TestRobot(TestCase):
         actual = robot.report()
 
         self.assertEqual(expected, actual)
+
+    def get_bad_place_scenarios(self):
+        """
+        List of placement values that should not produce a valid placement.
+
+        Calling report after all these tests should produce "Not on the board yet!" error.
+
+        :return: List contain scenarios, consisting of commands that do not make a valid placement.
+        """
+        return [
+            {
+                'label': 'Single board, X too high.',
+                'board': Board(1, 1),
+                'commands': [
+                    ('place', {'x': 0, 'y': 1, 'direction': Aim.North})
+                ]
+            },
+            {
+                'label': 'Single board, Y too high.',
+                'board': Board(1, 1),
+                'commands': [
+                    ('place', {'x': 1, 'y': 0, 'direction': Aim.North})
+                ]
+            }
+        ]
+
+    def test_bad_place_values(self):
+        """
+        Worker method for get_bad_place_scenarios
+        """
+        expected = "Not on the board yet!"
+        for scenario in self.get_bad_place_scenarios():
+
+            label, board, commands = scenario['label'], scenario['board'], scenario['commands']
+            robot = Robot(board)
+            for command, args in commands:
+                robot.__getattribute__(command)(**args)
+            actual = robot.report()
+            self.assertEqual(expected, actual)
