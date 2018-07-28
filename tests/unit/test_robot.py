@@ -162,6 +162,17 @@ class TestRobot(TestCase):
                 ],
                 'report': '0,0,NORTH',
             },
+            {
+                'label': "Robot never gets placed. Make sure commands don't crash the program.",
+                'board': Board(1, 1),
+                'commands': [
+                    ('place', {'x': 3, 'y': 3, 'direction': Aim.SOUTH}),
+                    ('move', {}),
+                    ('turn_left', {}),   # Back to North
+                    ('turn_right', {}),  # Turn to the West.
+                ],
+                'report': None,
+            },
         ]
 
     def test_move_scenarios(self):
