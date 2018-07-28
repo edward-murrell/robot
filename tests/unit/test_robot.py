@@ -1,4 +1,4 @@
-from robot import Robot
+from robot import Board, Robot
 from unittest import TestCase
 
 
@@ -14,6 +14,18 @@ class TestRobot(TestCase):
         expected = "Not on the board yet!"
 
         robot = Robot()
+        actual = robot.report()
+
+        self.assertEqual(expected, actual)
+
+    def test_bad_place_report(self):
+        """
+        Robot will error when placement is invalid.
+        """
+        expected = "Not on the board yet!"
+
+        robot = Robot(Board(1, 1))
+        robot.place(5, 5)
         actual = robot.report()
 
         self.assertEqual(expected, actual)
