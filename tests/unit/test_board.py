@@ -3,8 +3,14 @@ from unittest import TestCase
 
 
 class TestBoard(TestCase):
-    def test_board(self):
+    """
+    Test that board is an immutable class with height and width parameters.
+    """
+
+    def test_board_properties(self):
         """
-        First test to confirm existence of board.
+        Confirm that a board has a height and width available as properties.
         """
-        board = Board()
+        board = Board(height=45, width=16)
+        self.assertEqual(45, board.height)
+        self.assertEqual(16, board.width)
