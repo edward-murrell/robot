@@ -24,6 +24,9 @@ class Robot:
         self.__face = direction
         self.__placed = True
 
+    def move(self):
+        self.__locY+=1
+
     def report(self):
         if self.__placed:
             return f"{self.__locX},{self.__locY},{self.__face.value}"
