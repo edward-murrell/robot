@@ -19,6 +19,19 @@ class TestRobot(TestCase):
 
         self.assertEqual(expected, actual)
 
+    def test_invalid_does_not_override(self):
+        """
+        Robot will not be replaced after place command.
+        """
+        expected = '2,3,EAST'
+
+        robot = Robot(Board(16, 4))
+        robot.place(2, 3, Aim.East)
+        robot.place(16, 7, Aim.North)
+        actual = robot.report()
+
+        self.assertEqual(expected, actual)
+
     @staticmethod
     def get_bad_place_scenarios():
         """
