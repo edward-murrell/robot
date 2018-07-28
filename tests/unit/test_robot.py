@@ -7,29 +7,6 @@ class TestRobot(TestCase):
     Tests for a robot object to receive commands and issue reports.
     """
 
-    def test_robot_report_empty(self):
-        """
-        Reports before the board is placed
-        """
-        expected = "Not on the board yet!"
-
-        robot = Robot(Board(5, 5))
-        actual = robot.report()
-
-        self.assertEqual(expected, actual)
-
-    def test_bad_place_report(self):
-        """
-        Robot will error when placement is invalid.
-        """
-        expected = "Not on the board yet!"
-
-        robot = Robot(Board(1, 1))
-        robot.place(5, 5, Aim.South)
-        actual = robot.report()
-
-        self.assertEqual(expected, actual)
-
     def test_place_report(self):
         """
         Robot can report it's location after being placed on a single square board.
@@ -42,7 +19,8 @@ class TestRobot(TestCase):
 
         self.assertEqual(expected, actual)
 
-    def get_bad_place_scenarios(self):
+    @staticmethod
+    def get_bad_place_scenarios():
         """
         List of placement values that should not produce a valid placement.
 
@@ -51,6 +29,18 @@ class TestRobot(TestCase):
         :return: List contain scenarios, consisting of commands that do not make a valid placement.
         """
         return [
+            {
+                'label': 'No placement yet.',
+                'board': Board(5, 5),
+                'commands': []
+            },
+            {
+                'label': 'No placement yet.',
+                'board': Board(1, 1),
+                'commands': [
+                    ('place', {'x': 5, 'y': 5, 'direction': Aim.South})
+                ]
+            },
             {
                 'label': 'Single board, X too high.',
                 'board': Board(1, 1),
