@@ -42,17 +42,31 @@ class TestRobot(TestCase):
                 ]
             },
             {
-                'label': 'Single board, X too high.',
+                'label': 'Single placement, X too high.',
                 'board': Board(1, 1),
                 'commands': [
                     ('place', {'x': 0, 'y': 1, 'direction': Aim.North})
                 ]
             },
             {
-                'label': 'Single board, Y too high.',
+                'label': 'Single placement, Y too high.',
                 'board': Board(1, 1),
                 'commands': [
                     ('place', {'x': 1, 'y': 0, 'direction': Aim.North})
+                ]
+            },
+            {
+                'label': 'Single placement, X too low.',
+                'board': Board(3, 3),
+                'commands': [
+                    ('place', {'x': -4, 'y': 0, 'direction': Aim.East})
+                ]
+            },
+            {
+                'label': 'Single placement, Y too low.',
+                'board': Board(3, 3),
+                'commands': [
+                    ('place', {'x': 1, 'y': -2, 'direction': Aim.West})
                 ]
             }
         ]
