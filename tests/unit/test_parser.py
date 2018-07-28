@@ -29,3 +29,14 @@ class TestParser(TestCase):
         parser.read("LEFT")
 
         robot.turn_left.assert_called_once()
+
+    def test_parse_right(self):
+        """
+        Reading RIGHT calls Robot.turn_right()
+        """
+        robot = Mock(Robot)
+
+        parser = Parser(robot)
+        parser.read("RIGHT")
+
+        robot.turn_right.assert_called_once()
