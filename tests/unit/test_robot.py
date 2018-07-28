@@ -141,6 +141,27 @@ class TestRobot(TestCase):
                 ],
                 'report': '1,2,NORTH',
             },
+            {
+                'label': '1x1 board. Robot tries to walk off the edge in all directions.',
+                'board': Board(1, 1),
+                'commands': [
+                    ('place', {'x': 0, 'y': 0, 'direction': Aim.SOUTH}),
+                    ('move', {}),
+                    ('turn_right', {}),  # Turn to the West.
+                    ('move', {}),
+                    ('move', {}),
+                    ('turn_right', {}),  # North
+                    ('move', {}),
+                    ('move', {}),
+                    ('turn_right', {}),  # East
+                    ('move', {}),
+                    ('turn_left', {}),   # Back to North
+                    ('move', {}),
+                    ('move', {}),
+                    ('move', {}),
+                ],
+                'report': '0,0,NORTH',
+            },
         ]
 
     def test_move_scenarios(self):
