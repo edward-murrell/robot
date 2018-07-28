@@ -27,10 +27,22 @@ class Robot:
     def turn_left(self):
         if self.__face == Aim.North:
             self.__face = Aim.West
+        elif self.__face == Aim.West:
+            self.__face = Aim.South
+        elif self.__face == Aim.South:
+            self.__face = Aim.East
+        elif self.__face == Aim.East:
+            self.__face = Aim.North
 
     def turn_right(self):
         if self.__face == Aim.North:
             self.__face = Aim.East
+        elif self.__face == Aim.East:
+            self.__face = Aim.South
+        elif self.__face == Aim.South:
+            self.__face = Aim.West
+        elif self.__face == Aim.West:
+            self.__face = Aim.North
 
     def move(self):
         if self.__face == Aim.North:
