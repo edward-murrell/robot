@@ -113,6 +113,34 @@ class TestRobot(TestCase):
                 ],
                 'report': '2,2,SOUTH',
             },
+            {
+                'label': '3x3 board. Robot starts in centre, turns to south, circuits the board, returns to top.',
+                'board': Board(3, 3),
+                'commands': [
+                    ('place', {'x': 1, 'y': 1, 'direction': Aim.EAST}),
+                    ('turn_right', {}),
+                    ('move', {}),       # After command, will be at bottom of board.
+                    ('turn_left', {}),  # Turn east.
+                    ('move', {}),       # Bottom right corner.
+                    ('turn_left', {}),
+                    ('move', {}),
+                    ('move', {}),       # Now at top right
+                    ('turn_left', {}),
+                    ('move', {}),
+                    ('move', {}),       # Now at top left.
+                    ('turn_left', {}),
+                    ('move', {}),
+                    ('move', {}),       # Now at bottom left.
+                    ('turn_left', {}),
+                    ('move', {}),
+                    ('turn_right', {}),
+                    ('turn_right', {}),
+                    ('turn_right', {}),
+                    ('move', {}),
+                    ('move', {}),
+                ],
+                'report': '1,2,NORTH',
+            },
         ]
 
     def test_move_scenarios(self):
