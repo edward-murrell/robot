@@ -79,6 +79,40 @@ class TestRobot(TestCase):
                 ],
                 'report': '2,2,WEST',
             },
+            {
+                'label': 'Robot turns left three times from North to East',
+                'board': Board(5, 5),
+                'commands': [
+                    ('place', {'x': 2, 'y': 2, 'direction': Aim.North}),
+                    ('turn_left', {}),
+                    ('turn_left', {}),
+                    ('turn_left', {})
+                ],
+                'report': '2,2,EAST',
+            },
+            {
+                'label': 'Robot turns left three times from North to West',
+                'board': Board(5, 5),
+                'commands': [
+                    ('place', {'x': 2, 'y': 2, 'direction': Aim.North}),
+                    ('turn_left', {}),
+                    ('turn_left', {}),
+                    ('turn_left', {})
+                ],
+                'report': '2,2,EAST',
+            },
+            {
+                'label': 'Robot turns left three times and then right to go from North to South',
+                'board': Board(5, 5),
+                'commands': [
+                    ('place', {'x': 2, 'y': 2, 'direction': Aim.North}),
+                    ('turn_left', {}),
+                    ('turn_left', {}),
+                    ('turn_left', {}),
+                    ('turn_right', {})
+                ],
+                'report': '2,2,SOUTH',
+            },
         ]
 
     def test_move_scenarios(self):
