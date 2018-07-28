@@ -13,7 +13,7 @@ class TestRobot(TestCase):
         """
         expected = "Not on the board yet!"
 
-        robot = Robot()
+        robot = Robot(Board(5, 5))
         actual = robot.report()
 
         self.assertEqual(expected, actual)
