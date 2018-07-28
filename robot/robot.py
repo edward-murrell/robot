@@ -14,6 +14,10 @@ class Robot:
             return
         if y >= self.__board.height:
             return
+        if x < 0:
+            return
+        if y < 0:
+            return
 
         self.__locX = x
         self.__locY = y
