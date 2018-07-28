@@ -53,3 +53,14 @@ class TestParser(TestCase):
 
         robot.report.assert_called_once()
         self.assertEqual("Some Text", response)
+
+    def test_ignore_rubbish(self):
+        """
+        Invalid commands are ignored.
+        """
+        robot = Mock(Robot)
+
+        parser = Parser(robot)
+        parser.read("OPEN")
+
+        robot.assert_not_called()
