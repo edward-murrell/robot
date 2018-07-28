@@ -61,6 +61,24 @@ class TestRobot(TestCase):
                 ],
                 'report': '6,0,WEST'
             },
+            {
+                'label': 'Robot turns right from North to East',
+                'board': Board(5, 5),
+                'commands': [
+                    ('place', {'x': 2, 'y': 2, 'direction': Aim.North}),
+                    ('turn_right', {})
+                ],
+                'report': '2,2,EAST',
+            },
+            {
+                'label': 'Robot turns left from North to West',
+                'board': Board(5, 5),
+                'commands': [
+                    ('place', {'x': 2, 'y': 2, 'direction': Aim.North}),
+                    ('turn_left', {})
+                ],
+                'report': '2,2,WEST',
+            },
         ]
 
     def test_move_scenarios(self):
