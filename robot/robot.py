@@ -19,12 +19,16 @@ class Robot:
         self.__placed = True
 
     def turn_left(self):
-        self.__face = Aim((self.__face - 1) % 4)
+        if self.__placed:
+            self.__face = Aim((self.__face - 1) % 4)
 
     def turn_right(self):
-        self.__face = Aim((self.__face + 1) % 4)
+        if self.__placed:
+            self.__face = Aim((self.__face + 1) % 4)
 
     def move(self):
+        if not self.__placed:
+            return
         if self.__face == Aim.NORTH and self.__check_location(self.__locX, self.__locY + 1):
             self.__locY += 1
         elif self.__face == Aim.SOUTH and self.__check_location(self.__locX, self.__locY - 1):
