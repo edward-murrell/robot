@@ -40,3 +40,16 @@ class TestParser(TestCase):
         parser.read("RIGHT")
 
         robot.turn_right.assert_called_once()
+
+    def test_parse_report(self):
+        """
+        Reading RIGHT calls Robot.turn_right()
+        """
+        robot = Mock(Robot)
+        robot.report.return_value = "Some Text"
+
+        parser = Parser(robot)
+        response = parser.read("REPORT")
+
+        robot.report.assert_called_once()
+        self.assertEqual("Some Text", response)
