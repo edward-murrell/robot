@@ -7,17 +7,59 @@ class TestRobot(TestCase):
     Tests for a robot object to receive commands and issue reports.
     """
 
-    def test_place_report(self):
+    @staticmethod
+    def get_place_and_move_scenarios():
         """
-        Robot can report it's location after being placed on a single square board.
+        List of valid commands.
+
+        Calling report after all the commands should match the 'report' key.
+
+        :return: List contain scenarios, consisting of commands and a final 'report' location/
         """
-        expected = '0,0,NORTH'
+        return [
+            {
+                'label': "Robot can report it's location after being placed on a single square board.",
+                'board': Board(1, 1),
+                'commands': [
+                    ('place', {'x': 0, 'y': 0, 'direction': Aim.North})
+                ],
+                'report': '0,0,NORTH'
+            },
+            {
+                'label': 'Robot moves North after given valid movement command.',
+                'board': Board(8, 8),
+                'commands': [
+                    ('place', {'x': 2, 'y': 2, 'direction': Aim.North}),
+                    ('move', {})
+                ],
+                'report': '2,3,NORTH'
+            },
+            {
+                'label': 'Robot moves South after given valid movement command.',
+                'board': Board(8, 8),
+                'commands': [
+                    ('place', {'x': 2, 'y': 2, 'direction': Aim.South}),
+                    ('move', {})
+                ],
+                'report': '2,1,SOUTH'
+            },
+        ]
 
-        robot = Robot(Board(1, 1))
-        robot.place(0, 0, Aim.North)
-        actual = robot.report()
+    def test_move_scenarios(self):
+        """
+        Worker method for get_bad_place_scenarios
+        """
+        for scenario in self.get_place_and_move_scenarios():
 
-        self.assertEqual(expected, actual)
+            label, board, commands, expected =\
+                scenario['label'], scenario['board'], scenario['commands'], scenario['report']
+
+            robot = Robot(board)
+            for command, args in commands:
+                robot.__getattribute__(command)(**args)
+
+            actual = robot.report()
+            self.assertEqual(expected, actual, f"Failed on scenario: {label}")
 
     def test_invalid_does_not_override(self):
         """
@@ -28,32 +70,6 @@ class TestRobot(TestCase):
         robot = Robot(Board(16, 4))
         robot.place(2, 3, Aim.East)
         robot.place(16, 7, Aim.North)
-        actual = robot.report()
-
-        self.assertEqual(expected, actual)
-
-    def test_valid_move(self):
-        """
-        Robot moves after given valid movement command.
-        """
-        expected = '2,3,NORTH'
-
-        robot = Robot(Board(8, 8))
-        robot.place(2, 2, Aim.North)
-        robot.move()
-        actual = robot.report()
-
-        self.assertEqual(expected, actual)
-
-    def test_valid_move_south(self):
-        """
-        Robot moves after given valid movement command.
-        """
-        expected = '2,1,SOUTH'
-
-        robot = Robot(Board(8, 8))
-        robot.place(2, 2, Aim.South)
-        robot.move()
         actual = robot.report()
 
         self.assertEqual(expected, actual)
