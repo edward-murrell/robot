@@ -1,4 +1,4 @@
-from robot import Board, Robot
+from robot import Board, Robot, Aim
 from unittest import TestCase
 
 
@@ -26,6 +26,18 @@ class TestRobot(TestCase):
 
         robot = Robot(Board(1, 1))
         robot.place(5, 5)
+        actual = robot.report()
+
+        self.assertEqual(expected, actual)
+
+    def test_place_report(self):
+        """
+        Robot can report it's location after being placed on a single square board.
+        """
+        expected = '0,0,NORTH'
+
+        robot = Robot(Board(1, 1))
+        robot.place(0, 0, Aim.North)
         actual = robot.report()
 
         self.assertEqual(expected, actual)
