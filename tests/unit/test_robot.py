@@ -295,3 +295,38 @@ class TestRobot(TestCase):
                 robot.__getattribute__(command)(**args)
             actual = robot.report()
             self.assertEqual(expected, actual, f"Failed on scenario: {label}")
+
+    def test_multiple_placing(self):
+        """
+        Move the robot around a 5x5 board, requesting progress along the way.
+        """
+        robot = Robot(Board(5, 5))
+
+        robot.place(13, 13, Aim.SOUTH)
+        self.assertEqual(None, robot.report())
+
+        robot.place(2, 2, Aim.WEST)
+        robot.place(13, 13, Aim.SOUTH)
+        self.assertEqual('2,2,WEST', robot.report())
+
+        robot.place(1, 1, Aim.NORTH)
+        robot.move()
+        robot.move()
+        robot.turn_right()
+        robot.move()
+        self.assertEqual('2,3,EAST', robot.report())
+
+        robot.place(0, 5, Aim.NORTH)
+        self.assertEqual('2,3,EAST', robot.report())
+
+        robot.place(3, 4, Aim.SOUTH)
+        self.assertEqual('3,4,SOUTH', robot.report())
+
+        robot.move()
+        robot.move()
+        robot.move()
+        robot.move()
+        robot.turn_left()  # Turn to the East
+        robot.move()
+        robot.move()       # Try to walk off the table.
+        self.assertEqual('4,0,EAST', robot.report())
