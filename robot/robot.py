@@ -44,4 +44,4 @@ class Robot:
         if self.__placed:
             return f"{self.__locX},{self.__locY},{self.__face.name}"
         else:
-            return "Not on the board yet!"
+            return None
