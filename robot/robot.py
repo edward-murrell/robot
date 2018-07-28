@@ -12,6 +12,8 @@ class Robot:
     def place(self, x: int, y: int, direction: Aim):
         if x >= self.__board.width:
             return
+        if y >= self.__board.height:
+            return
 
         self.__locX = x
         self.__locY = y
