@@ -25,37 +25,23 @@ class Robot:
         self.__placed = True
 
     def turn_left(self):
-        if self.__face == Aim.North:
-            self.__face = Aim.West
-        elif self.__face == Aim.West:
-            self.__face = Aim.South
-        elif self.__face == Aim.South:
-            self.__face = Aim.East
-        elif self.__face == Aim.East:
-            self.__face = Aim.North
+        self.__face = Aim((self.__face - 1) % 4)
 
     def turn_right(self):
-        if self.__face == Aim.North:
-            self.__face = Aim.East
-        elif self.__face == Aim.East:
-            self.__face = Aim.South
-        elif self.__face == Aim.South:
-            self.__face = Aim.West
-        elif self.__face == Aim.West:
-            self.__face = Aim.North
+        self.__face = Aim((self.__face + 1) % 4)
 
     def move(self):
-        if self.__face == Aim.North:
+        if self.__face == Aim.NORTH:
             self.__locY += 1
-        elif self.__face == Aim.South:
+        elif self.__face == Aim.SOUTH:
             self.__locY -= 1
-        if self.__face == Aim.East:
+        if self.__face == Aim.EAST:
             self.__locX += 1
-        elif self.__face == Aim.West:
+        elif self.__face == Aim.WEST:
             self.__locX -= 1
 
     def report(self):
         if self.__placed:
-            return f"{self.__locX},{self.__locY},{self.__face.value}"
+            return f"{self.__locX},{self.__locY},{self.__face.name}"
         else:
             return "Not on the board yet!"

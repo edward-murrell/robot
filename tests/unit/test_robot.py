@@ -21,7 +21,7 @@ class TestRobot(TestCase):
                 'label': "Robot can report it's location after being placed on a single square board.",
                 'board': Board(1, 1),
                 'commands': [
-                    ('place', {'x': 0, 'y': 0, 'direction': Aim.North})
+                    ('place', {'x': 0, 'y': 0, 'direction': Aim.NORTH})
                 ],
                 'report': '0,0,NORTH'
             },
@@ -29,7 +29,7 @@ class TestRobot(TestCase):
                 'label': 'Robot moves North after given valid movement command.',
                 'board': Board(8, 8),
                 'commands': [
-                    ('place', {'x': 2, 'y': 2, 'direction': Aim.North}),
+                    ('place', {'x': 2, 'y': 2, 'direction': Aim.NORTH}),
                     ('move', {})
                 ],
                 'report': '2,3,NORTH'
@@ -38,7 +38,7 @@ class TestRobot(TestCase):
                 'label': 'Robot moves South after given valid movement command.',
                 'board': Board(8, 8),
                 'commands': [
-                    ('place', {'x': 2, 'y': 2, 'direction': Aim.South}),
+                    ('place', {'x': 2, 'y': 2, 'direction': Aim.SOUTH}),
                     ('move', {})
                 ],
                 'report': '2,1,SOUTH'
@@ -47,7 +47,7 @@ class TestRobot(TestCase):
                 'label': 'Robot moves East after given valid movement command.',
                 'board': Board(8, 8),
                 'commands': [
-                    ('place', {'x': 2, 'y': 4, 'direction': Aim.East}),
+                    ('place', {'x': 2, 'y': 4, 'direction': Aim.EAST}),
                     ('move', {})
                 ],
                 'report': '3,4,EAST'
@@ -56,7 +56,7 @@ class TestRobot(TestCase):
                 'label': 'Robot moves West after given valid movement command.',
                 'board': Board(8, 8),
                 'commands': [
-                    ('place', {'x': 7, 'y': 0, 'direction': Aim.West}),
+                    ('place', {'x': 7, 'y': 0, 'direction': Aim.WEST}),
                     ('move', {})
                 ],
                 'report': '6,0,WEST'
@@ -65,7 +65,7 @@ class TestRobot(TestCase):
                 'label': 'Robot turns right from North to East',
                 'board': Board(5, 5),
                 'commands': [
-                    ('place', {'x': 2, 'y': 2, 'direction': Aim.North}),
+                    ('place', {'x': 2, 'y': 2, 'direction': Aim.NORTH}),
                     ('turn_right', {})
                 ],
                 'report': '2,2,EAST',
@@ -74,7 +74,7 @@ class TestRobot(TestCase):
                 'label': 'Robot turns left from North to West',
                 'board': Board(5, 5),
                 'commands': [
-                    ('place', {'x': 2, 'y': 2, 'direction': Aim.North}),
+                    ('place', {'x': 2, 'y': 2, 'direction': Aim.NORTH}),
                     ('turn_left', {})
                 ],
                 'report': '2,2,WEST',
@@ -83,7 +83,7 @@ class TestRobot(TestCase):
                 'label': 'Robot turns left three times from North to East',
                 'board': Board(5, 5),
                 'commands': [
-                    ('place', {'x': 2, 'y': 2, 'direction': Aim.North}),
+                    ('place', {'x': 2, 'y': 2, 'direction': Aim.NORTH}),
                     ('turn_left', {}),
                     ('turn_left', {}),
                     ('turn_left', {})
@@ -94,7 +94,7 @@ class TestRobot(TestCase):
                 'label': 'Robot turns left three times from North to West',
                 'board': Board(5, 5),
                 'commands': [
-                    ('place', {'x': 2, 'y': 2, 'direction': Aim.North}),
+                    ('place', {'x': 2, 'y': 2, 'direction': Aim.NORTH}),
                     ('turn_left', {}),
                     ('turn_left', {}),
                     ('turn_left', {})
@@ -105,7 +105,7 @@ class TestRobot(TestCase):
                 'label': 'Robot turns left three times and then right to go from North to South',
                 'board': Board(5, 5),
                 'commands': [
-                    ('place', {'x': 2, 'y': 2, 'direction': Aim.North}),
+                    ('place', {'x': 2, 'y': 2, 'direction': Aim.NORTH}),
                     ('turn_left', {}),
                     ('turn_left', {}),
                     ('turn_left', {}),
@@ -138,8 +138,8 @@ class TestRobot(TestCase):
         expected = '2,3,EAST'
 
         robot = Robot(Board(16, 4))
-        robot.place(2, 3, Aim.East)
-        robot.place(16, 7, Aim.North)
+        robot.place(2, 3, Aim.EAST)
+        robot.place(16, 7, Aim.NORTH)
         actual = robot.report()
 
         self.assertEqual(expected, actual)
@@ -163,45 +163,45 @@ class TestRobot(TestCase):
                 'label': 'No placement yet.',
                 'board': Board(1, 1),
                 'commands': [
-                    ('place', {'x': 5, 'y': 5, 'direction': Aim.South})
+                    ('place', {'x': 5, 'y': 5, 'direction': Aim.SOUTH})
                 ]
             },
             {
                 'label': 'Single placement, X too high.',
                 'board': Board(1, 1),
                 'commands': [
-                    ('place', {'x': 0, 'y': 1, 'direction': Aim.North})
+                    ('place', {'x': 0, 'y': 1, 'direction': Aim.NORTH})
                 ]
             },
             {
                 'label': 'Single placement, Y too high.',
                 'board': Board(1, 1),
                 'commands': [
-                    ('place', {'x': 1, 'y': 0, 'direction': Aim.North})
+                    ('place', {'x': 1, 'y': 0, 'direction': Aim.NORTH})
                 ]
             },
             {
                 'label': 'Single placement, X too low.',
                 'board': Board(3, 3),
                 'commands': [
-                    ('place', {'x': -4, 'y': 0, 'direction': Aim.East})
+                    ('place', {'x': -4, 'y': 0, 'direction': Aim.EAST})
                 ]
             },
             {
                 'label': 'Single placement, Y too low.',
                 'board': Board(3, 3),
                 'commands': [
-                    ('place', {'x': 1, 'y': -2, 'direction': Aim.West})
+                    ('place', {'x': 1, 'y': -2, 'direction': Aim.WEST})
                 ]
             },
             {
                 'label': 'Place multiple times invalid location. Do not place.',
                 'board': Board(16, 16),
                 'commands': [
-                    ('place', {'x': -1, 'y': 4, 'direction': Aim.North}),
-                    ('place', {'x': 3, 'y': 17, 'direction': Aim.East}),
-                    ('place', {'x': 7, 'y': 999999, 'direction': Aim.West}),
-                    ('place', {'x': 20, 'y': 17, 'direction': Aim.South})
+                    ('place', {'x': -1, 'y': 4, 'direction': Aim.NORTH}),
+                    ('place', {'x': 3, 'y': 17, 'direction': Aim.EAST}),
+                    ('place', {'x': 7, 'y': 999999, 'direction': Aim.WEST}),
+                    ('place', {'x': 20, 'y': 17, 'direction': Aim.SOUTH})
                 ]
             }
         ]
