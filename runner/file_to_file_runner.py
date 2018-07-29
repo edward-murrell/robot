@@ -26,5 +26,5 @@ class FileToFileRunner:
             line = line.rstrip()
             output = self.__parser.read(line)
             if output:
-                self.__output_file.write(output)
+                self.__output_file.write(f"{output}\n")
             line = self.__input_file.readline()
