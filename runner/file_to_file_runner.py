@@ -8,6 +8,9 @@ class FileToFileRunner:
 
     def __init__(self, infile, outfile, parser: Parser):
         """
+        Build a program runner using files as input and output.
+
+        Stdin and/or Stdout can be used for infile and outfile respectively, or regular files.
 
         :param infile: Open input file handle.
         :param outfile: Open output file handle.
@@ -19,7 +22,7 @@ class FileToFileRunner:
 
     def run(self):
         """
-        Run instructions from infile.
+        Run parser over self.__input_file, and save results to self.__output_file.
         """
         line = self.__input_file.readline()
         while line:
