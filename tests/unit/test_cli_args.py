@@ -20,6 +20,6 @@ class TestCliArgs(TestCase):
         # This should work, but the error literally insists that:
         # AssertionError: [<_io.TextIOWrapper name=...>] is not an instance of <class '_io.TextIOWrapper'>
         # self.assertIsInstance(config.file, io.TextIOWrapper)
-        self.assertEqual(expected, config.file.readline())
+        self.assertEqual(expected, config.file.readline().rstrip())
 
         config.file.close()
