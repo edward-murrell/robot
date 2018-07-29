@@ -5,4 +5,4 @@ MOVE
 LEFT
 MOVE
 REPORT
-## This should output Output: 3,3,NORTH
+## This should output: 3,3,NORTH

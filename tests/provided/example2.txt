@@ -2,4 +2,4 @@
 PLACE 0,0,NORTH
 LEFT
 REPORT
-## This should output Output: 0,0,WEST
+## This should output: 0,0,WEST

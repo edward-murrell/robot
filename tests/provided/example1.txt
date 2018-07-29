@@ -2,4 +2,4 @@
 PLACE 0,0,NORTH
 MOVE
 REPORT
-## This should output 0,1,NORTH
+## This should output: 0,1,NORTH
