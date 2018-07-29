@@ -35,3 +35,15 @@ class TestOutput(TestCase):
 
         self.assertEqual(0, completed.returncode)
         self.assertEqual(expected, completed.stdout)
+
+    def test_complex(self):
+        """
+        Test a complex contrived example.
+        """
+        expected = b"2,2,EAST\n4,4,SOUTH\n4,0,SOUTH\n"
+
+        completed = subprocess.run(["python3.6", "robot.py", "--file", "tests/provided/complex.txt"],
+                                   stdout=subprocess.PIPE)
+
+        self.assertEqual(0, completed.returncode)
+        self.assertEqual(expected, completed.stdout)

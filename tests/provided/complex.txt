@@ -1,0 +1,30 @@
+## Contrived example.
+PLACE ,2,
+REPORT
+PLACE 0,2,EAST
+MOVE
+MOVE
+REPORT
+## This should now output 2,2,EAST
+PLACE 7,7,XX
+LEFT
+MOVE
+RIGHT
+MOVE
+LEFT
+MOVE
+RIGHT
+MOVE
+RIGHT
+REPORT
+## This should output Output: 4,4,SOUTH
+MOVE
+MOVE
+MOVE
+MOVE
+MOVE
+MOVE
+MOVE
+MOVE
+REPORT
+## This should output Output: 4,0,SOUTH
