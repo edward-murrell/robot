@@ -76,3 +76,6 @@ docker run --rm robot-ekm make functional_tests
 
 # Credits
 - Edward Murrell / edward@codefoundation.com.au
+
+# Source
+`https://github.com/edward-murrell/robot`
