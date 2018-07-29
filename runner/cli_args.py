@@ -6,12 +6,11 @@ class CliArgs:
     @staticmethod
     def parse(arguments):
         parser = CliArgs.__build()
-        return parser.parse_args(arguments)
-
-
+        config = parser.parse_args(arguments)
+        return config
 
     @staticmethod
     def __build() -> ArgumentParser:
         argparser = ArgumentParser()
-        argparser.add_argument('--file', nargs='+', type=FileType('r'))
+        argparser.add_argument('--file', dest="file", type=FileType('r'))
         return argparser
