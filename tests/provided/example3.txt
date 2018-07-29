@@ -1,0 +1,8 @@
+## Example 3 from requirements.
+PLACE 1,2,EAST
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT
+## This should output Output: 3,3,NORTH
