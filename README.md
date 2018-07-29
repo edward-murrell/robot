@@ -6,6 +6,9 @@ Toy robot demo program. 29 / July 2018.
 - Make and/or Docker for running tests.
 
 # Running
+```
+python3.6 robot.py --file example.txt
+```
 The program will fail if you are using Python 3.5 or lower.
 
 Note that Ubuntu 16.04 ships with Python 3.5. A Dockerfile is included for
