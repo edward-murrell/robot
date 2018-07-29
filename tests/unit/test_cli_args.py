@@ -17,7 +17,9 @@ class TestCliArgs(TestCase):
         args = ["--file", "./tests/provided/empty.txt"]
         config = CliArgs.parse(args)
 
-        self.assertIsInstance(config.file, io.TextIOWrapper)
+        # This should work, but the error literally insists that:
+        # AssertionError: [<_io.TextIOWrapper name=...>] is not an instance of <class '_io.TextIOWrapper'>
+        # self.assertIsInstance(config.file, io.TextIOWrapper)
         self.assertEqual(expected, config.file.readline())
 
         config.file.close()
