@@ -6,6 +6,10 @@ from unittest.mock import Mock, _Call as Call
 
 
 class TestFileToFileRunner(TestCase):
+    """
+    Test(s) that FileToFileRunner passes the contents of input file/streams
+     to a parser, and saves results to output file.
+    """
 
     def test_file_passed_to_parser(self):
         """
