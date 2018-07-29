@@ -11,8 +11,8 @@ class Board:
 
         Height and width cannot be changed after board creation.
 
-        :param width:
-        :param height:
+        :param width: Width of board in squares.
+        :param height: Height of board in squares.
         """
         self.__dict__['width'] = width
         self.__dict__['height'] = height
