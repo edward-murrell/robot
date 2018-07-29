@@ -18,12 +18,12 @@ class TestFileToFileRunner(TestCase):
             Call(("read", ("MOVE",)), ),
             Call(("read", ("REPORT",)), ),
         ]
-        expected_response = "1,2,NORTH"
+        expected_response = "1,2,NORTH\n"
 
         output = io.StringIO()
 
         parser = Mock(Parser)
-        parser.read.side_effect = [None, None, None, expected_response]
+        parser.read.side_effect = [None, None, None, "1,2,NORTH"]
 
         main = FileToFileRunner(contents, output, parser)
         main.run()
