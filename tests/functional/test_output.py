@@ -4,7 +4,7 @@ from unittest import TestCase
 
 class TestOutput(TestCase):
     def test_example_one(self):
-        expected = "0,1,NORTH"
+        expected = b"0,1,NORTH\n"
 
         completed = subprocess.run(["python3.6", "robot.py", "--file", "tests/provided/example1.txt"],
                                    stdout=subprocess.PIPE)
