@@ -36,6 +36,51 @@ docker build -t robot-ekm ./
 docker run --rm robot-ekm python ./robot.py --file tests/provided/complex.txt
 ```
 
+## Instructions
+Input files can be any text files with following commands, separated by newlines.
+```
+PLACE X,Y,F
+MOVE
+LEFT
+RIGHT
+REPORT
+```
+
+The board is five by five squares, with the the co-ordinates 0,0 being in the
+ lower left (SOUTH-WEST) corner. The direction for `F` in the `PLACE` command
+ must be one of `NORTH`, `SOUTH`, `EAST`, or `WEST`.
+
+The `LEFT` and `RIGHT` commands will turn the robot 90 degrees to the left or
+ right. `MOVE` will move the robot exactly one square in the direction it is
+ facing, if it is able.
+
+These commands can be in any order. Invalid commands are ignored, including
+ `PLACE` commands that are out of bounds, and `MOVE` commands that would take
+ it off the edge of the board.
+
+At the end of the file, the program will exit.
+
+## Example of Instructions
+```
+PLACE 2,4,SOUTH
+MOVE
+MOVE
+RIGHT
+MOVE
+LEFT
+MOVE
+REPORT
+```
+
+This program will now print out `1,1,SOUTH` and exit.
+
+## Example files
+The following files are provided as examples:
+* `example.txt`
+* `tests/provided/complex.txt`
+* `tests/provided/example1.txt`
+* `tests/provided/example3.txt`
+* `tests/provided/example2.txt`
 
 # Tests
 All tests can be run by calling:
