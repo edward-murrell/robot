@@ -3,6 +3,12 @@ from unittest import TestCase
 
 
 class TestOutput(TestCase):
+    """
+    Functional tests of the program.
+
+    Tests are input files in tests/provided against expected output.
+    """
+
     def test_example_one(self):
         """
         Test the first example given by the requirements document
