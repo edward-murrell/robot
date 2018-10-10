@@ -15,6 +15,6 @@ class CliArgs:
         :return: Namespace, with open file in file key.
         """
         parser = ArgumentParser(add_help=True, prog="robot.py")
-        parser.add_argument('--file', dest="file", type=FileType('r'))
+        parser.add_argument('--file', dest="file", type=FileType('r'), required=True)
         config, _ = parser.parse_known_args(args=arguments)
         return config
