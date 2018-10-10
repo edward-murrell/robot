@@ -9,21 +9,18 @@ from runner import CliArgs, FileToFileRunner
 from robot import Robot, Board, Parser
 
 
-def main(arguments):
+def main(config):
     """
     Run the program using file as input.
 
-    Out is written standard out.
+    Output is to written standard out.
 
-    Argument list should contain ['--file', <filename>]
-
-    :param arguments: Arguments from sys.argv, with script name removed.
+    :param config: Configuration dict. Must contain a key of 'file' that points to an open file handle.
     """
-    config = CliArgs.parse(arguments)
     runner = FileToFileRunner(config.file, sys.stdout, Parser(Robot(Board(5, 5))))
     runner.run()
     config.file.close()
 
 
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    main(CliArgs.parse(sys.argv))
