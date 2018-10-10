@@ -98,7 +98,7 @@ docker run --rm robot-ekm make tests
 ## Unit
 To run unit tests, use the following shell commands:
 ```
-make unit.tests
+make unit_tests
 # OR
 python3.6 -m unittest tests.unit
 # OR
@@ -107,7 +107,7 @@ docker run --rm robot-ekm make unit_tests
 
 ## Functional
 ```
-make unit.functional
+make functional_tests
 # OR
 python3.6 -m unittest tests.functional
 # OR
