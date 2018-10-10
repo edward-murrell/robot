@@ -10,16 +10,14 @@ class TestCliArgs(TestCase):
 
     def test_file_input(self):
         """
-        Extract single argument of file, and return t
+        Extract the file type
         """
         expected = "Nothing."
 
-        args = ["--file", "./tests/provided/empty.txt"]
+        args = ["robot.py", "--file", "./tests/provided/empty.txt"]
         config = CliArgs.parse(args)
 
-        # This should work, but the error literally insists that:
-        # AssertionError: [<_io.TextIOWrapper name=...>] is not an instance of <class '_io.TextIOWrapper'>
-        # self.assertIsInstance(config.file, io.TextIOWrapper)
+        self.assertIsInstance(config.file, io.TextIOWrapper)
         self.assertEqual(expected, config.file.readline().rstrip())
 
         config.file.close()
