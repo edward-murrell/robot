@@ -24,10 +24,7 @@ class FileToFileRunner:
         """
         Run parser over self.__input_file, and save results to self.__output_file.
         """
-        line = self.__input_file.readline()
-        while line:
-            line = line.rstrip()
-            output = self.__parser.read(line)
+        for line in self.__input_file.readlines():
+            output = self.__parser.read(line.rstrip())
             if output:
                 self.__output_file.write(f"{output}\n")
-            line = self.__input_file.readline()
