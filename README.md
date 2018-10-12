@@ -33,7 +33,7 @@ make build_docker && make run_docker_example
 
 # OR
 docker build -t robot-ekm ./
-docker run --rm robot-ekm python ./robot.py --file tests/provided/complex.txt
+docker run -v `pwd`:/robot:rw -u `id -u`:`id -g` --rm robot-ekm python ./robot.py --file tests/provided/complex.txt
 ```
 
 ## Instructions
@@ -83,6 +83,14 @@ The following files are provided as examples:
 * `tests/provided/example2.txt`
 
 # Tests
+Tests require pyunit to run, and need it installed. Install pyunit locally by running:
+```
+make install_requirements
+OR
+python3.6 -m pip install -rrequirements.txt
+```
+Alternatively, use the provided docker container.
+
 All tests can be run by calling:
 ```
 make tests
