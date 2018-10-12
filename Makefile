@@ -1,5 +1,8 @@
 .PHONY: tests unit_tests functional_tests
 
+UID:=`id -u`
+GID:=`id -g`
+
 tests: unit_tests functional_tests
 
 install_requirements:
@@ -15,7 +18,7 @@ build_docker:
 	docker build -t robot-ekm ./
 
 run_docker_tests:
-	docker run -v $(CURDIR):/robot:rw --rm robot-ekm make tests
+	docker run -v $(CURDIR):/robot:rw -u $(UID):$(GID) --rm robot-ekm make tests
 
 run_docker_example:
-	docker run -v $(CURDIR):/robot:rw --rm robot-ekm python ./robot.py --file tests/provided/complex.txt
+	docker run -v $(CURDIR):/robot:rw -u $(UID):$(GID) --rm robot-ekm python ./robot.py --file tests/provided/complex.txt
