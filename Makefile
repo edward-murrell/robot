@@ -12,7 +12,7 @@ build_docker:
 	docker build -t robot-ekm ./
 
 run_docker_tests:
-	docker run --rm robot-ekm make tests
+	docker run -v $(CURDIR):/robot:rw --rm robot-ekm make tests
 
 run_docker_example:
-	docker run --rm robot-ekm python ./robot.py --file tests/provided/complex.txt
+	docker run -v $(CURDIR):/robot:rw --rm robot-ekm python ./robot.py --file tests/provided/complex.txt
