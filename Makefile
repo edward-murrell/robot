@@ -2,6 +2,9 @@
 
 tests: unit_tests functional_tests
 
+install_requirements:
+	python3.6 -m pip install -rrequirements.txt
+
 unit_tests:
 	python3.6 -m pytest tests/unit
 
