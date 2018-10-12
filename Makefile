@@ -3,10 +3,10 @@
 tests: unit_tests functional_tests
 
 unit_tests:
-	python3.6 -m unittest tests.unit
+	python3.6 -m pytest tests/unit
 
 functional_tests:
-	python3.6 -m unittest tests.functional
+	python3.6 -m pytest tests/functional
 
 build_docker:
 	docker build -t robot-ekm ./
